@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>我的個人頁面</title>
+    <title>梁曲妍 的個人頁面</title>
 
     <!-- jQuery CDN -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
     <style>
-        /* ───── ColorHunt 顏色 ───── */
+        /* ColorHunt 配色 */
         :root {
             --dark: #222831;
             --greyblue: #393E46;
@@ -31,6 +31,15 @@
             text-align: center;
         }
 
+        header img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 15px;
+            border: 3px solid var(--teal);
+        }
+
         nav a {
             color: var(--teal);
             margin: 0 15px;
@@ -50,7 +59,7 @@
             color: var(--greyblue);
         }
 
-        /* 作品集 區塊 */
+        /* 作品集 */
         .work-list {
             margin-top: 20px;
             display: flex;
@@ -66,20 +75,23 @@
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
             cursor: pointer;
             position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
-        .work-item:hover {
-            background: var(--light);
+        .work-item img {
+            max-width: 100%;
+            border-radius: 6px;
+            margin-top: 10px;
         }
 
-        /* 隱藏的作品描述 */
         .work-desc {
             display: none;
             padding-top: 10px;
             color: var(--greyblue);
         }
 
-        /* 回頂部按鈕 */
         #topBtn {
             position: fixed;
             bottom: 25px;
@@ -99,6 +111,12 @@
             color: var(--light);
             margin-top: 50px;
         }
+
+        #contact a {
+            color: var(--teal);
+            text-decoration: none;
+            font-weight: bold;
+        }
     </style>
 </head>
 
@@ -106,7 +124,8 @@
 
     <!-- HEADER -->
     <header>
-        <h1>你的名字</h1>
+        <img src="https://drive.google.com/uc?export=view&id=1eSzTWXbOiTlkbvZ9no7pyMf6C1T3Tacl" alt="CatIslan 頭像">
+        <h1>CatIslan</h1>
         <p>一句簡短的自我介紹或標語</p>
 
         <nav>
@@ -129,17 +148,20 @@
         <div class="work-list">
             <div class="work-item">
                 作品 A - 點我展開
-                <div class="work-desc">這是作品 A 的詳細內容，使用 jQuery 做展開/收合效果。</div>
+                <img src="https://drive.google.com/uc?export=view&id=1LPsYT67fXTODxjyrJBSb_u_hz0r6o4D_" alt="作品A">
+                <div class="work-desc">作品 A 詳細描述</div>
             </div>
 
             <div class="work-item">
                 作品 B - 點我展開
-                <div class="work-desc">作品 B 的詳細描述，這段文字預設是隱藏的。</div>
+                <img src="https://drive.google.com/uc?export=view&id=1ZFJ9Csh4fkndeaC4_r4nR7r4Dprtc9YN" alt="作品B">
+                <div class="work-desc">作品 B 詳細描述</div>
             </div>
 
             <div class="work-item">
                 作品 C - 點我展開
-                <div class="work-desc">作品 C 的內容，點擊後會滑動顯示。</div>
+                <img src="https://drive.google.com/uc?export=view&id=1RUN424GAhpbW-6oXvUtxvphuuUq_BKLv" alt="作品C">
+                <div class="work-desc">作品 C 詳細描述</div>
             </div>
         </div>
     </section>
@@ -147,7 +169,7 @@
     <!-- CONTACT -->
     <section id="contact">
         <h2>聯絡方式</h2>
-        <p>Email：example@mail.com</p>
+        <p>Email：<a href="mailto:41143502@gms.ndhu.edu.tw">41143502@gms.ndhu.edu.tw</a></p>
 
         <input id="msgInput" type="text" placeholder="輸入訊息…" style="width:100%; padding:10px;">
         <button id="sendBtn" style="margin-top:10px; padding:10px 20px; background:var(--teal); border:none; color:white;">
@@ -162,14 +184,14 @@
 
     <!-- FOOTER -->
     <footer>
-        © 2025 你的名字. All Rights Reserved.
+        © 2025 CatIslan. All Rights Reserved.
     </footer>
 
     <!-- jQuery 效果 -->
     <script>
         // 點作品展開描述
         $(".work-item").click(function () {
-            $(this).find(".work-desc").slideToggle(200); // jQuery 動畫
+            $(this).find(".work-desc").slideToggle(200);
         });
 
         // 表單送出
