@@ -1,224 +1,74 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>梁曲妍 的個人頁面</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>曲的個人頁面</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;700&display=swap" rel="stylesheet" />
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<style>
+body {
+margin: 0;
+font-family: 'Noto Sans TC', sans-serif;
+background: #0c0c0d;
+color: #f5f5f5;
+overflow-x: hidden;
+}
 
-    <!-- jQuery CDN -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-    <style>
-        /* ColorHunt 配色 */
-        :root {
-            --dark: #222831;
-            --greyblue: #393E46;
-            --teal: #00ADB5;
-            --light: #EEEEEE;
-        }
+/* 開場動畫 */
+#intro {
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background: #1a1a1d;
+display: flex;
+align-items: center;
+justify-content: center;
+flex-direction: column;
+z-index: 9999;
+animation: fadeOut 2s ease 3s forwards;
+}
+#intro h1 {
+font-size: 3rem;
+color: #b3003c;
+opacity: 0;
+animation: fadeIn 2s ease forwards;
+}
 
-        body {
-            margin: 0;
-            font-family: "Segoe UI", sans-serif;
-            background: var(--light);
-            color: var(--dark);
-        }
 
-        header {
-            background: var(--dark);
-            color: var(--light);
-            padding: 50px 20px;
-            text-align: center;
-        }
+@keyframes fadeIn {
+to { opacity: 1; }
+}
+@keyframes fadeOut {
+to { opacity: 0; visibility: hidden; }
+}
 
-        header img {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            object-fit: cover;
-            margin-bottom: 15px;
-            border: 3px solid var(--teal);
-        }
 
-        nav a {
-            color: var(--teal);
-            margin: 0 15px;
-            text-decoration: none;
-            font-weight: bold;
-        }
+header {
+padding: 40px 20px;
+text-align: center;
+}
+.avatar {
+width: 160px;
+height: 160px;
+border-radius: 50%;
+border: 4px solid #b3003c;
+background-size: cover;
+background-position: center;
+margin: auto;
+}
 
-        section {
-            padding: 40px 20px;
-            max-width: 800px;
-            margin: auto;
-        }
 
-        h2 {
-            border-bottom: 3px solid var(--teal);
-            padding-bottom: 8px;
-            color: var(--greyblue);
-        }
+h2 {
+color: #b3003c;
+margin-top: 20px;
+}
 
-        /* 作品集 */
-        .work-list {
-            margin-top: 20px;
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
 
-        .work-item {
-            background: white;
-            padding: 18px;
-            border-left: 5px solid var(--teal);
-            border-radius: 6px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            cursor: pointer;
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .work-item img {
-            max-width: 100%;
-            border-radius: 6px;
-            margin-top: 10px;
-        }
-
-        .work-desc {
-            display: none;
-            padding-top: 10px;
-            color: var(--greyblue);
-        }
-
-        #topBtn {
-            position: fixed;
-            bottom: 25px;
-            right: 25px;
-            padding: 10px 15px;
-            background: var(--dark);
-            color: white;
-            border-radius: 6px;
-            cursor: pointer;
-            display: none;
-        }
-
-        footer {
-            text-align: center;
-            padding: 20px;
-            background: var(--greyblue);
-            color: var(--light);
-            margin-top: 50px;
-        }
-
-        #contact a {
-            color: var(--teal);
-            text-decoration: none;
-            font-weight: bold;
-        }
-    </style>
-</head>
-
-<body>
-
-    <!-- HEADER -->
-    <header>
-        <img src="https://drive.google.com/uc?export=view&id=1eSzTWXbOiTlkbvZ9no7pyMf6C1T3Tacl" alt="CatIslan 頭像">
-        <h1>CatIslan</h1>
-        <p>一句簡短的自我介紹或標語</p>
-
-        <nav>
-            <a href="#about">關於我</a>
-            <a href="#works">作品集</a>
-            <a href="#contact">聯絡方式</a>
-        </nav>
-    </header>
-
-    <!-- ABOUT -->
-    <section id="about">
-        <h2>關於我</h2>
-        <p>我是一位喜歡創作、設計與前端開發的人。這裡是我的個人頁面。</p>
-    </section>
-
-    <!-- WORKS -->
-    <section id="works">
-        <h2>作品集</h2>
-
-        <div class="work-list">
-            <div class="work-item">
-                作品 A - 點我展開
-                <img src="https://drive.google.com/uc?export=view&id=1LPsYT67fXTODxjyrJBSb_u_hz0r6o4D_" alt="作品A">
-                <div class="work-desc">作品 A 詳細描述</div>
-            </div>
-
-            <div class="work-item">
-                作品 B - 點我展開
-                <img src="https://drive.google.com/uc?export=view&id=1ZFJ9Csh4fkndeaC4_r4nR7r4Dprtc9YN" alt="作品B">
-                <div class="work-desc">作品 B 詳細描述</div>
-            </div>
-
-            <div class="work-item">
-                作品 C - 點我展開
-                <img src="https://drive.google.com/uc?export=view&id=1RUN424GAhpbW-6oXvUtxvphuuUq_BKLv" alt="作品C">
-                <div class="work-desc">作品 C 詳細描述</div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CONTACT -->
-    <section id="contact">
-        <h2>聯絡方式</h2>
-        <p>Email：<a href="mailto:41143502@gms.ndhu.edu.tw">41143502@gms.ndhu.edu.tw</a></p>
-
-        <input id="msgInput" type="text" placeholder="輸入訊息…" style="width:100%; padding:10px;">
-        <button id="sendBtn" style="margin-top:10px; padding:10px 20px; background:var(--teal); border:none; color:white;">
-            送出
-        </button>
-
-        <p id="sendResult" style="margin-top:10px; color:green;"></p>
-    </section>
-
-    <!-- Back to top -->
-    <div id="topBtn">▲</div>
-
-    <!-- FOOTER -->
-    <footer>
-        © 2025 CatIslan. All Rights Reserved.
-    </footer>
-
-    <!-- jQuery 效果 -->
-    <script>
-        // 點作品展開描述
-        $(".work-item").click(function () {
-            $(this).find(".work-desc").slideToggle(200);
-        });
-
-        // 表單送出
-        $("#sendBtn").click(function () {
-            const msg = $("#msgInput").val();
-            if (!msg) {
-                alert("請輸入訊息！");
-                return;
-            }
-            $("#sendResult").text("已收到你的訊息：" + msg);
-            $("#msgInput").val("");
-        });
-
-        // 顯示回頂部
-        $(window).scroll(function () {
-            if ($(this).scrollTop() > 200) {
-                $("#topBtn").fadeIn();
-            } else {
-                $("#topBtn").fadeOut();
-            }
-        });
-
-        // 回頂部
-        $("#topBtn").click(function () {
-            $("html, body").animate({ scrollTop: 0 }, 400);
-        });
-    </script>
-
-</body>
+section {
 </html>
